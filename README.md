@@ -1,5 +1,9 @@
 # Commerce Services - Technical Interview
 
+### Answer
+This project contains the solved exercise proposed which is explained further down in this README. It contains the necessary logic to satisfy the functional requirements as well as its corresponding tests and logging.
+In some classes some functions have been written in a functional programming way and in an imperative programming way getting to show that both are equally good.
+
 ### Context
 
 We are an online book store. We have an API that returns our catalog and stock. 

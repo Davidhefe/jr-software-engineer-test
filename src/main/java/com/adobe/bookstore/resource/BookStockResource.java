@@ -1,5 +1,7 @@
-package com.adobe.bookstore;
+package com.adobe.bookstore.resource;
 
+import com.adobe.bookstore.model.BookStock;
+import com.adobe.bookstore.service.IBookStockService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,17 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/books_stock/")
 public class BookStockResource {
 
-    private BookStockRepository bookStockRepository;
+    private IBookStockService bookStockService;
 
     @Autowired
-    public BookStockResource(BookStockRepository bookStockRepository) {
-        this.bookStockRepository = bookStockRepository;
+    public BookStockResource(IBookStockService bookStockService) {
+        this.bookStockService = bookStockService;
     }
 
     @GetMapping("{bookId}")
     public ResponseEntity<BookStock> getStockById(@PathVariable String bookId) {
-        return bookStockRepository.findById(bookId)
+        return bookStockService.getStockById(bookId)
                 .map(bookStock -> ResponseEntity.ok(bookStock))
                 .orElse(ResponseEntity.notFound().build());
     }
+
 }
